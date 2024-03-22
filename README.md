@@ -5,6 +5,151 @@
 
 ## 1) Lógica de Programação
 
+### Comandos básicos
+
+#### Atribuição, use `<-`.
+
+``` r
+x <- 4
+```
+
+Atribuição por teclado, use a função `readLine`. Você precisa digitar o
+valor no console.
+
+``` r
+x <- readline("Digite número: ")
+#> Digite número:
+x
+#> [1] ""
+```
+
+#### Imprimindo um valor na tela
+
+``` r
+x <- "Oi mundo"
+print(x)
+#> [1] "Oi mundo"
+```
+
+#### Estrutura de decisão:
+
+Estrutura se: executada somente se a condição for verdadeira.
+
+Imprima x se x for maior que zero.
+
+``` r
+x <- 3
+if(x > 0){
+  print(x)
+}
+#> [1] 3
+```
+
+Imprima x se x for maior que zero, caso contrário imprima “valor menor
+que zero”.
+
+``` r
+x <- -5
+if(x > 0){
+  print(x)
+}else{
+  print("Valor menor que zero")
+}
+#> [1] "Valor menor que zero"
+```
+
+Estrutura do if utilizada em vetores.
+
+``` r
+notas <- c(9,3,4,2,6,5)
+```
+
+Se a nota for maior ou igual que 5, `aprovado`, caso contrário,
+`reprovado`.
+
+``` r
+ifelse(notas >=5, "aprovado","reprovado")
+#> [1] "aprovado"  "reprovado" "reprovado" "reprovado" "aprovado"  "aprovado"
+```
+
+Usando o `case_when()`, pacote `{tidyverse}`.
+
+CLassificar o dia de semana, 1 a 7, de domingo a sábado.
+
+``` r
+# Carregando o pacote
+library(tidyverse)
+
+# gerando numeros aleatorios de 1 a 7
+num <- trunc(runif(20,1,8))
+case_when(
+  num == 1 ~ "domingo",
+  num == 2 ~ "segunda-feira",
+  num == 3 ~ "terca-feira",
+  num == 4 ~ "quarta-feira",
+  num == 5 ~ "quinta-feira",
+  num == 6 ~ "sexta-feira",
+  num == 7 ~ "sabado",
+  .default = "Erro"
+)
+#>  [1] "sexta-feira"   "quarta-feira"  "sexta-feira"   "sabado"       
+#>  [5] "domingo"       "quarta-feira"  "segunda-feira" "quarta-feira" 
+#>  [9] "quinta-feira"  "quinta-feira"  "sabado"        "quinta-feira" 
+#> [13] "segunda-feira" "sabado"        "terca-feira"   "segunda-feira"
+#> [17] "domingo"       "sexta-feira"   "quarta-feira"  "quinta-feira"
+```
+
+#### Estrutura de Repetição:
+
+Imprimir número de 1 a 10
+
+``` r
+for(i in 1:10){
+  print(i)
+}
+#> [1] 1
+#> [1] 2
+#> [1] 3
+#> [1] 4
+#> [1] 5
+#> [1] 6
+#> [1] 7
+#> [1] 8
+#> [1] 9
+#> [1] 10
+```
+
+Diferente de “criar um vetor contendo os números de 1 a 10”;
+
+``` r
+meu_vetor <- 1:10
+meu_vetor 
+#>  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+Repetição condicional usando o `while`. Enquanto a condição for
+verdadeira, a repetição continua (loop).
+
+``` r
+x <- 1
+while (x <=10) {
+  print(x)
+  x <- x + 1 #o x é alterado em cada iteração
+}
+#> [1] 1
+#> [1] 2
+#> [1] 3
+#> [1] 4
+#> [1] 5
+#> [1] 6
+#> [1] 7
+#> [1] 8
+#> [1] 9
+#> [1] 10
+```
+
+# Exercícios
+
 ### 1.1) Estrutura sequencial
 
 1.  Crie um código que dado dois pontos quaisquer $P$ e $Q$ com
