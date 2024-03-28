@@ -10,32 +10,6 @@
 
 ## 1) Lógica de Programação
 
-### Comandos básicos
-
-#### Atribuição, use `<-`.
-
-``` r
-x <- 4
-```
-
-Atribuição por teclado, use a função `readLine`. Você precisa digitar o
-valor no console.
-
-``` r
-x <- readline("Digite número: ")
-#> Digite número:
-x
-#> [1] ""
-```
-
-#### Imprimindo um valor na tela
-
-``` r
-x <- "Oi mundo"
-print(x)
-#> [1] "Oi mundo"
-```
-
 ### Tipos de variáveis
 
 #### Variáveis e Tipos Primários de Dados
@@ -328,6 +302,34 @@ A e B:
 | FALSE | TRUE  |  TRUE  |
 | FALSE | FALSE | FALSE  |
 
+## Prática de Exercícios
+
+### Comandos básicos
+
+#### Atribuição, use `<-`.
+
+``` r
+x <- 4
+```
+
+Atribuição por teclado, use a função `readLine`. Você precisa digitar o
+valor no console.
+
+``` r
+x <- readline("Digite número: ")
+#> Digite número:
+x
+#> [1] ""
+```
+
+#### Imprimindo um valor na tela
+
+``` r
+x <- "Oi mundo"
+print(x)
+#> [1] "Oi mundo"
+```
+
 #### Estrutura de decisão:
 
 Estrutura se: executada somente se a condição for verdadeira.
@@ -389,11 +391,11 @@ case_when(
   num == 7 ~ "sabado",
   .default = "Erro"
 )
-#>  [1] "quarta-feira"  "quarta-feira"  "sexta-feira"   "terca-feira"  
-#>  [5] "quarta-feira"  "quarta-feira"  "terca-feira"   "quinta-feira" 
-#>  [9] "sexta-feira"   "quinta-feira"  "sexta-feira"   "terca-feira"  
-#> [13] "sexta-feira"   "quarta-feira"  "terca-feira"   "segunda-feira"
-#> [17] "sabado"        "sexta-feira"   "domingo"       "terca-feira"
+#>  [1] "quinta-feira"  "terca-feira"   "quinta-feira"  "segunda-feira"
+#>  [5] "sexta-feira"   "quarta-feira"  "quinta-feira"  "domingo"      
+#>  [9] "quarta-feira"  "sexta-feira"   "sabado"        "sexta-feira"  
+#> [13] "sexta-feira"   "terca-feira"   "domingo"       "domingo"      
+#> [17] "segunda-feira" "domingo"       "quarta-feira"  "segunda-feira"
 ```
 
 #### Estrutura de Repetição:
@@ -455,44 +457,133 @@ while (x <=10) {
 
 $D= \sqrt{(x_2-x_1)^2+(y_2-y_1)^2 )}$
 
+``` r
+# Entrada
+x1 <- as.numeric(readline("Digite número coordenada (x) ponto P: "))
+y1 <- as.numeric(readline("Digite número coordenada (y) ponto P: "))
+x2 <- as.numeric(readline("Digite número coordenada (x) ponto Q: "))
+y2 <- as.numeric(readline("Digite número coordenada (y) ponto Q: "))
+
+# Processamento
+distancia <- sqrt((x2-x1)^2+(y2-y1)^2)
+
+# Saída
+print(paste0("A distância entre os pontos é: ", distancia))
+```
+
 2.  Implemente a partir do exercício anterior o cálculo da inclinação da
     reta que passa pelos pontos $P$ e $Q$. Lembre-se que a inclinação
     $m$ pode ser calculada pela expressão:
     $m=\frac{(y_2-y_1)}{(x_2-x_1 )}$, para retas horizontais, $m=0$ e
     para retas verticais não existe inclinação
 
+``` r
+# Entrada
+x1 <- as.numeric(readline("Digite número coordenada (x) ponto P: "))
+y1 <- as.numeric(readline("Digite número coordenada (y) ponto P: "))
+x2 <- as.numeric(readline("Digite número coordenada (x) ponto Q: "))
+y2 <- as.numeric(readline("Digite número coordenada (y) ponto Q: "))
+
+# Processamento
+distance <- sqrt((x2-x1)^2+(y2-y1)^2)
+slope <- (y2-y1)/(x2-x1)
+# Saída
+print(paste0("A distância entre os pontos é: ", distance))
+print(paste0("A inclinação da reta é: ", slope))
+```
+
 ### 1.2) Estrutura de Decisão
 
 1.  Faça um programa que peça dois números e imprima o maior deles.
 
+``` r
+# Entrada
+num_1 <- readline("Digite número 1: ")
+num_2 <- readline("Digite número 2: ")
+
+## garantindo que as entradas são numéricas
+num_1 <- as.numeric(num_1)
+num_2 <- as.numeric(num_2)
+
+# Definindo e iniciando os números maior e menor
+if(num_1 > num_2){
+  maior <- num_1
+  menor <- num_2
+}else{
+  maior <- num_2
+  menor <- num_1
+}
+
+print(paste0("maior Número Digitado: ", maior))
+```
+
 2.  Faça um programa que peça um valor e mostre na tela se o valor é
     positivo ou negativo.
 
-3.  Faça um programa que peça para entrar com um ano com 4 dígitos e
+``` r
+# Entrada
+num_1 <- readline("Digite número: ")
+
+## garantindo que as entradas são numéricas
+num_1 <- as.numeric(num_1)
+
+# Definindo e iniciando os números maior e menor
+if(num_1 >= 0){
+  print("Número Positivo")
+}else{
+  print("Número Negativo")
+}
+```
+
+4.  Faça um programa que peça para entrar com um ano com 4 dígitos e
     determine se o mesmo é ou não bissexto (procure regra na rede).
 
-4.  Faça um programa que verifique se uma letra digitada é vogal ou
+``` r
+    algoritmo "bissexto"
+    // Função : Bissexto - Um ano é bissexto se ele for divisível por 400 ou se ele
+    //         for divisível por 4 e não por 100.
+    // Bissexto:  1980, 1984, 1988, 1992, 1996 e 2000.
+    //          1900 não foi bissexto, mas 1600 foi
+    // Autor : Samuel T. C. Santos
+    // Data : 18/02/2015
+    // Seção de Declarações
+    var
+       ano : inteiro
+    
+    inicio
+    // Seção de Comandos
+       escreva("Ano? ")
+       leia(ano)
+       
+       se (ano mod 400 = 0) ou ((ano mod 4 = 0) e (ano mod 100 <> 0)) entao
+          escreval(ano, " é bisexto!")
+       fimse
+       
+    fimalgoritmo
+```
+
+5.  Faça um programa que verifique se uma letra digitada é vogal ou
     consoante.
 
-5.  Faça um programa para a leitura de duas notas parciais de um aluno.
+6.  Faça um programa para a leitura de duas notas parciais de um aluno.
     O programa deve calcular a média alcançada por aluno e apresentar: •
     A mensagem “Aprovado”, se a média alcançada for maior ou igual a
     sete; • A mensagem “Reprovado”, se a média for menor do que sete; •
     A mensagem “Aprovado com Distinção”, se a média for igual a dez.
 
-6.  Faça um programa que leia três números e mostre o maior e o menor
+7.  Faça um programa que leia três números e mostre o maior e o menor
     deles.
 
-7.  Faça um programa que pergunte o preço de três produtos e informe
+8.  Faça um programa que pergunte o preço de três produtos e informe
     qual produto você deve comprar, sabendo que a decisão é sempre pelo
     mais barato.
 
-8.  Faça um programa que pergunte em que turno você estuda. Peça para
+9.  Faça um programa que pergunte em que turno você estuda. Peça para
     digitar M-matutino ou V-Vespertino ou N- Noturno. Imprima a mensagem
     “Bom Dia!”, “Boa Tarde!” ou “Boa Noite!” ou “Valor Inválido!”,
     conforme o caso.
 
-9.  Uma empresa resolveu dar um aumento de salário aos seus
+10. Uma empresa resolveu dar um aumento de salário aos seus
     colaboradores e lhe contrataram para desenvolver o programa que
     calculará os reajustes. Faça um programa que recebe o salário de um
     colaborador e o reajuste segundo o seguinte critério, baseado no
