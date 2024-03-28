@@ -16,6 +16,13 @@ knitr::opts_chunk$set(
 
 # Iniciação Científica 
 
+## Material de auxílio no aprendizado
+  + Curso de Lógica de Programação (Juliana Braga, Edson Pimentel)  <https://moocs.ggte.unicamp.br/course/logicadeprogramacao/intro>
+
+
+
+
+
 ## 1) Lógica de Programação
 
 

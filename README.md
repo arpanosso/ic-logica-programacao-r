@@ -3,6 +3,11 @@
 
 # Iniciação Científica
 
+## Material de auxílio no aprendizado
+
+- Curso de Lógica de Programação (Juliana Braga, Edson Pimentel)
+  <https://moocs.ggte.unicamp.br/course/logicadeprogramacao/intro>
+
 ## 1) Lógica de Programação
 
 ### Comandos básicos
@@ -384,11 +389,11 @@ case_when(
   num == 7 ~ "sabado",
   .default = "Erro"
 )
-#>  [1] "quinta-feira"  "terca-feira"   "terca-feira"   "quarta-feira" 
-#>  [5] "segunda-feira" "terca-feira"   "terca-feira"   "domingo"      
-#>  [9] "quinta-feira"  "sexta-feira"   "quinta-feira"  "terca-feira"  
-#> [13] "terca-feira"   "quinta-feira"  "segunda-feira" "domingo"      
-#> [17] "segunda-feira" "segunda-feira" "terca-feira"   "terca-feira"
+#>  [1] "quarta-feira"  "quarta-feira"  "sexta-feira"   "terca-feira"  
+#>  [5] "quarta-feira"  "quarta-feira"  "terca-feira"   "quinta-feira" 
+#>  [9] "sexta-feira"   "quinta-feira"  "sexta-feira"   "terca-feira"  
+#> [13] "sexta-feira"   "quarta-feira"  "terca-feira"   "segunda-feira"
+#> [17] "sabado"        "sexta-feira"   "domingo"       "terca-feira"
 ```
 
 #### Estrutura de Repetição:
