@@ -36,7 +36,7 @@ Variável é, no sentido de programação, uma região de memória de um computa
 
 #####	Identificadores (nome das variáveis)
 
-Um identificador (nomes das variáveis, ou constantes) válido é uma sequência de uma ou mais letras, dígitos ou underline (_). 
+Um identificador (nomes das variáveis, ou constantes) válido é uma sequência de uma ou mais letras, dígitos ou underline (`_`). 
 Nomes das variáveis podem ser descritivos, e passam o significado daquele obejto, sem ambiguidade.   
 Nomes de variável podem ser atribuídos com um ou mais caracteres.   
 Caracteres como espaços em branco, pontuações e símbolos especiais não podem ser utilizados para formar os identificadores.   

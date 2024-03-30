@@ -26,14 +26,14 @@ informações.
 ##### Identificadores (nome das variáveis)
 
 Um identificador (nomes das variáveis, ou constantes) válido é uma
-sequência de uma ou mais letras, dígitos ou underline (*). Nomes das
+sequência de uma ou mais letras, dígitos ou underline (`_`). Nomes das
 variáveis podem ser descritivos, e passam o significado daquele obejto,
 sem ambiguidade.  
 Nomes de variável podem ser atribuídos com um ou mais caracteres.  
 Caracteres como espaços em branco, pontuações e símbolos especiais não
 podem ser utilizados para formar os identificadores.  
 Identificadores de variáveis devem sempre ser inicializados por letras,
-ou mesmo por um underline (*). Os identificadores não devem ser
+ou mesmo por um underline (\_). Os identificadores não devem ser
 iniciados por dígitos (números). Outra regra que devemos considerar é
 que os identificadores não podem coincidir com palavras-chaves da
 linguagem R, ou palavras específicas do compilador, as quais são
@@ -391,11 +391,11 @@ case_when(
   num == 7 ~ "sabado",
   .default = "Erro"
 )
-#>  [1] "sabado"        "sabado"        "segunda-feira" "sabado"       
-#>  [5] "segunda-feira" "quarta-feira"  "terca-feira"   "quarta-feira" 
-#>  [9] "quinta-feira"  "sexta-feira"   "quinta-feira"  "sexta-feira"  
-#> [13] "domingo"       "quinta-feira"  "sexta-feira"   "terca-feira"  
-#> [17] "quarta-feira"  "segunda-feira" "sabado"        "sabado"
+#>  [1] "domingo"       "sexta-feira"   "segunda-feira" "quinta-feira" 
+#>  [5] "segunda-feira" "segunda-feira" "quarta-feira"  "terca-feira"  
+#>  [9] "segunda-feira" "quinta-feira"  "sabado"        "sabado"       
+#> [13] "sabado"        "segunda-feira" "sexta-feira"   "sexta-feira"  
+#> [17] "sexta-feira"   "segunda-feira" "quinta-feira"  "sexta-feira"
 ```
 
 #### Estrutura de Repetição:
