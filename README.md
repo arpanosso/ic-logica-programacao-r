@@ -391,11 +391,11 @@ case_when(
   num == 7 ~ "sabado",
   .default = "Erro"
 )
-#>  [1] "quinta-feira"  "terca-feira"   "quinta-feira"  "segunda-feira"
-#>  [5] "sexta-feira"   "quarta-feira"  "quinta-feira"  "domingo"      
-#>  [9] "quarta-feira"  "sexta-feira"   "sabado"        "sexta-feira"  
-#> [13] "sexta-feira"   "terca-feira"   "domingo"       "domingo"      
-#> [17] "segunda-feira" "domingo"       "quarta-feira"  "segunda-feira"
+#>  [1] "sabado"        "sabado"        "segunda-feira" "sabado"       
+#>  [5] "segunda-feira" "quarta-feira"  "terca-feira"   "quarta-feira" 
+#>  [9] "quinta-feira"  "sexta-feira"   "quinta-feira"  "sexta-feira"  
+#> [13] "domingo"       "quinta-feira"  "sexta-feira"   "terca-feira"  
+#> [17] "quarta-feira"  "segunda-feira" "sabado"        "sabado"
 ```
 
 #### Estrutura de Repetição:
@@ -538,32 +538,70 @@ if(num_1 >= 0){
 4.  Faça um programa que peça para entrar com um ano com 4 dígitos e
     determine se o mesmo é ou não bissexto (procure regra na rede).
 
+Vamos ver um algoritmo, isto é, um passo a passo para saber se um ano é
+ou não bissexto.
+
+Passo 1) Verificar se o ano é divisível por 4.
+
+– Se não for divisível por 4, então, não é ano bissexto. – Se for
+divisível por 4, então, vamos para o passo 2.
+
+Passo 2) Verificar se o ano é divisível por 100.
+
+– Se não for divisível por 100, então, é ano bissexto (caso 1).
+
+– Se for divisível por 100, vamos para o passo 3. Passo 3) Verificar se
+o ano é divisível por 400.
+
+– Se não for divisível por 400, então, o ano não é bissexto.
+
+:– Se for divisível por 400, então, é ano bissexto (caso 2).
+
 ``` r
-    algoritmo "bissexto"
-    // Função : Bissexto - Um ano é bissexto se ele for divisível por 400 ou se ele
-    //         for divisível por 4 e não por 100.
-    // Bissexto:  1980, 1984, 1988, 1992, 1996 e 2000.
-    //          1900 não foi bissexto, mas 1600 foi
-    // Autor : Samuel T. C. Santos
-    // Data : 18/02/2015
-    // Seção de Declarações
-    var
-       ano : inteiro
-    
-    inicio
-    // Seção de Comandos
-       escreva("Ano? ")
-       leia(ano)
-       
-       se (ano mod 400 = 0) ou ((ano mod 4 = 0) e (ano mod 100 <> 0)) entao
-          escreval(ano, " é bisexto!")
-       fimse
-       
-    fimalgoritmo
+ano <- as.numeric(readline("Digite o ano: "))
+if(ano %% 4 == 0){
+  if(ano %% 100 == 0){
+    if(ano %% 400 == 0){
+      print("Ano bisexto!") 
+    }else{
+      print("Ano não bisexto.")
+    }
+  }else{
+    print("Ano bisexto!")
+  }
+}else{
+  print("Ano não bisexto.")
+}
 ```
 
 5.  Faça um programa que verifique se uma letra digitada é vogal ou
     consoante.
+
+``` r
+letra <- as.character(readline("Digite uma letra: "))
+
+if(letra == "a" | letra == "e" | letra == "i" |
+   letra == "o" | letra == "u" | letra == "A" |
+   letra == "E" | letra == "I" | letra == "O" | 
+   letra == "U"){
+  print("Vogal")
+}else{
+  print("Consoante")
+}
+```
+
+Ou
+
+``` r
+vogais <- c("a","e","i","o","u")
+letra <- as.character(readline("Digite uma letra: "))
+letra <- stringr::str_to_lower(letra)
+if(letra %in% vogais) {
+  print("Vogal")
+}else{
+  print("Consoante")
+}
+```
 
 6.  Faça um programa para a leitura de duas notas parciais de um aluno.
     O programa deve calcular a média alcançada por aluno e apresentar: •
@@ -574,6 +612,43 @@ if(num_1 >= 0){
 7.  Faça um programa que leia três números e mostre o maior e o menor
     deles.
 
+``` r
+num_1 <- as.numeric(readline("Digite o n1: "))
+num_2 <- as.numeric(readline("Digite o n2: "))
+maior <- 0
+menor <- 0
+if(num_1 > num_2){
+  maior <- num_1
+  menor <- num_2
+}else{
+  maior <- num_2
+  menor <- num_1
+}
+num_3 <- as.numeric(readline("Digite o n3: "))
+
+if(num_3 > maior){
+  maior <- num_3
+}
+
+if(num_3 < menor){
+  menor <- num_3
+}
+
+print(paste0("Maior Número Digitado: ", maior))
+print(paste0("Menor Número Digitado: ", menor))
+```
+
+ou
+
+``` r
+num_1 <- as.numeric(readline("Digite o n1: "))
+num_2 <- as.numeric(readline("Digite o n2: "))
+num_3 <- as.numeric(readline("Digite o n3: "))
+vetor <- c(num_1, num_2, num_3)
+print(paste0("Maior Número Digitado: ", max(vetor)))
+print(paste0("Menor Número Digitado: ", min(vetor)))
+```
+
 8.  Faça um programa que pergunte o preço de três produtos e informe
     qual produto você deve comprar, sabendo que a decisão é sempre pelo
     mais barato.
@@ -583,15 +658,32 @@ if(num_1 >= 0){
     “Bom Dia!”, “Boa Tarde!” ou “Boa Noite!” ou “Valor Inválido!”,
     conforme o caso.
 
+``` r
+turno <- as.character(
+  readline("Qual turno você estuda? Digite:
+            [M]-matutino ou [V]-vespertino  ou [N]-Noturno: "))
+
+
+
+turno <- stringr::str_to_upper(turno)
+print(dplyr::case_when(
+  turno == "M" ~ ("Bom dia"),
+  turno == "V" ~ ("Boa tarde"),
+  turno == "N" ~ ("Boa noite"),
+  TRUE ~ "Valor Inválido"
+))
+```
+
 10. Uma empresa resolveu dar um aumento de salário aos seus
     colaboradores e lhe contrataram para desenvolver o programa que
     calculará os reajustes. Faça um programa que recebe o salário de um
     colaborador e o reajuste segundo o seguinte critério, baseado no
-    salário atual:  
-    • salários até R\$ 280,00 (incluindo) : aumento de 20%  
-    • salários entre `R$` 280,00 e R\$ 700,00 : aumento de 15%  
-    • salários entre `R$` 700,00 e R\$ 1500,00 : aumento de 10%  
-    • salários de R\$ 1500,00 em diante : aumento de 5%.
+    salário atual:
+
+• salários até R\$ 280,00 (incluindo) : aumento de 20%  
+• salários entre `R$` 280,00 e R\$ 700,00 : aumento de 15%  
+• salários entre `R$` 700,00 e R\$ 1500,00 : aumento de 10%  
+• salários de R\$ 1500,00 em diante : aumento de 5%.
 
 Após o aumento ser realizado, informe na tela:  
 • o salário antes do reajuste;  
