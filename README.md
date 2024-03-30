@@ -262,11 +262,11 @@ Utilizamos três operadores lógicos básicos para a formação de novas
 proposições lógicas compostas a partir de outras proposições lógicas
 simples. Os operadores lógicos em R são apresentados na tabela abaixo.
 
-| Operator Lógico |     Função     |            Exemplos             |
-|:----------------|:--------------:|:-------------------------------:|
-| `!`             | Não (negação)  |    !(3 \> 5) retorna `TRUE`     |
-| `&`             | E (conjunção)  | 3 \> 5 & 4 \< 8 retorna `FALSE` |
-| `|`             | Ou (disjunção) |             3 \> 5              |
+| Operator Lógico |     Função     |             Exemplos              |
+|:----------------|:--------------:|:---------------------------------:|
+| `!`             | Não (negação)  |     !(3 \> 5) retorna `TRUE`      |
+| `&`             | E (conjunção)  |  3 \> 5 & 4 \< 8 retorna `FALSE`  |
+| $\|$            | Ou (disjunção) | 3 \> 5 $\|$ 4 \< 8 retorna `TRUE` |
 
 Tabela-verdade é o conjunto de todas as possibilidades combinatórias
 entre os valores de diversas variáveis lógicas, as quais se encontram em
@@ -391,11 +391,11 @@ case_when(
   num == 7 ~ "sabado",
   .default = "Erro"
 )
-#>  [1] "domingo"       "sexta-feira"   "segunda-feira" "quinta-feira" 
-#>  [5] "segunda-feira" "segunda-feira" "quarta-feira"  "terca-feira"  
-#>  [9] "segunda-feira" "quinta-feira"  "sabado"        "sabado"       
-#> [13] "sabado"        "segunda-feira" "sexta-feira"   "sexta-feira"  
-#> [17] "sexta-feira"   "segunda-feira" "quinta-feira"  "sexta-feira"
+#>  [1] "quarta-feira"  "segunda-feira" "quarta-feira"  "segunda-feira"
+#>  [5] "quarta-feira"  "domingo"       "quarta-feira"  "segunda-feira"
+#>  [9] "terca-feira"   "quarta-feira"  "sexta-feira"   "sexta-feira"  
+#> [13] "domingo"       "quinta-feira"  "sexta-feira"   "sexta-feira"  
+#> [17] "terca-feira"   "quinta-feira"  "quarta-feira"  "domingo"
 ```
 
 #### Estrutura de Repetição:
@@ -1027,8 +1027,12 @@ professor digite o gabarito da prova antes dos alunos usarem o programa.
     vetores.
 
 Lembre-se:
-$(A \cup B) = \{x ∣ \in A \text { ou }x \in BA \text { ou } (x \in A, x \in B)$
-e $(A \cap B) = \{x ∣ (x \in A, x \in B)\}$
+
+$$(A \cup B) = \{x ∣x  \in  A \text { ou   }x  \in B \text { ou } (x \in A \text{ e } x \in B)$$
+
+e
+
+$$(A \cap B) = \{x ∣ (x \in A, x \in B)\}$$
 
 Exemplo dados os conjuntos A = { 1, 2, 3, 5} e B {2,4,5}, temos:
 (A∪B={1,2,3,4,5} e A∩B={2,5})

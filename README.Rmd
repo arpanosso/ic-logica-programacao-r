@@ -212,7 +212,7 @@ Operator Lógico	| Função	| Exemplos
 :---|:---:|:---:
 `!`	| Não (negação)	|!(3 > 5) retorna `TRUE`
 `&` |	E (conjunção)	| 3 > 5 & 4 < 8 retorna `FALSE`
-`|`	| Ou (disjunção) |	3 > 5 | 4 < 8 retorna `TRUE`
+ $\|$	| Ou (disjunção) |	3 > 5 $\|$ 4    < 8 retorna `TRUE`
 
 Tabela-verdade é o conjunto de todas as possibilidades combinatórias entre os valores de diversas variáveis lógicas, as quais se encontram em apenas duas situações Verdadeiro (`TRUE` equivale a $1$ ) ou Falso (`FALSE` equivale a $0$ ), e um conjunto de operadores lógicos. Observe o programa abaixo:
 
@@ -850,9 +850,13 @@ Após concluir isto você poderia incrementar o programa permitindo que o profes
 
 1. Escreva um código que dado dois vetores numéricos inteiros, com tamanhos diferentes. Imprima a união e a Interseção entre esses vetores. 
 
-Lembre-se: $(A \cup B) = \{x ∣ \in  A \text { ou }x  \in BA \text { ou } (x \in A, x \in B)$
+Lembre-se: 
+
+$$(A \cup B) = \{x ∣x  \in  A \text { ou   }x  \in B \text { ou } (x \in A \text{ e } x \in B)$$
+
 e
-$(A \cap B) = \{x ∣ (x \in A, x \in B)\}$
+
+$$(A \cap B) = \{x ∣ (x \in A, x \in B)\}$$
 
 Exemplo dados os conjuntos A = { 1, 2, 3, 5} e B {2,4,5}, temos: (A∪B={1,2,3,4,5} e A∩B={2,5})
 
