@@ -391,11 +391,11 @@ case_when(
   num == 7 ~ "sabado",
   .default = "Erro"
 )
-#>  [1] "quarta-feira"  "segunda-feira" "quarta-feira"  "segunda-feira"
-#>  [5] "quarta-feira"  "domingo"       "quarta-feira"  "segunda-feira"
-#>  [9] "terca-feira"   "quarta-feira"  "sexta-feira"   "sexta-feira"  
-#> [13] "domingo"       "quinta-feira"  "sexta-feira"   "sexta-feira"  
-#> [17] "terca-feira"   "quinta-feira"  "quarta-feira"  "domingo"
+#>  [1] "quinta-feira"  "quarta-feira"  "sabado"        "quarta-feira" 
+#>  [5] "quinta-feira"  "quinta-feira"  "segunda-feira" "domingo"      
+#>  [9] "terca-feira"   "segunda-feira" "domingo"       "domingo"      
+#> [13] "domingo"       "sexta-feira"   "segunda-feira" "terca-feira"  
+#> [17] "quarta-feira"  "quarta-feira"  "terca-feira"   "terca-feira"
 ```
 
 #### Estrutura de Repetição:
@@ -663,8 +663,6 @@ turno <- as.character(
   readline("Qual turno você estuda? Digite:
             [M]-matutino ou [V]-vespertino  ou [N]-Noturno: "))
 
-
-
 turno <- stringr::str_to_upper(turno)
 print(dplyr::case_when(
   turno == "M" ~ ("Bom dia"),
@@ -694,6 +692,20 @@ Após o aumento ser realizado, informe na tela:
 11. Faça um programa que leia um número e exiba o dia correspondente da
     semana. (1- Domingo, 2- Segunda, etc.), se digitar outro valor deve
     aparecer valor inválido.
+
+``` r
+numero <- as.numeric(
+  readline("Qual o dia da semana?"))
+
+if(numero == 1) print("Domingo")
+if(numero == 2) print("Segunda-feira")
+if(numero == 3) print("Terça-feira")
+if(numero == 4) print("Quarta-feira")
+if(numero == 5) print("Quinta-feira")
+if(numero == 6) print("Sexta-feira")
+if(numero == 7) print("Sábado")
+if(numero<1 | numero >7) print("Valor inválido")
+```
 
 12. Faça um programa que tendo como dados de entrada o preço de custo de
     um produto e um código de origem, emita o preço junto de sua
