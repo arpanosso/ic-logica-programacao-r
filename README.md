@@ -328,6 +328,8 @@ x
 x <- "Oi mundo"
 print(x)
 #> [1] "Oi mundo"
+x
+#> [1] "Oi mundo"
 ```
 
 #### Estrutura de decisão:
@@ -373,7 +375,7 @@ ifelse(notas >=5, "aprovado","reprovado")
 
 Usando o `case_when()`, pacote `{tidyverse}`.
 
-CLassificar o dia de semana, 1 a 7, de domingo a sábado.
+Classificar o dia de semana, 1 a 7, de domingo a sábado.
 
 ``` r
 # Carregando o pacote
@@ -381,21 +383,6 @@ library(tidyverse)
 
 # gerando numeros aleatorios de 1 a 7
 num <- trunc(runif(20,1,8))
-case_when(
-  num == 1 ~ "domingo",
-  num == 2 ~ "segunda-feira",
-  num == 3 ~ "terca-feira",
-  num == 4 ~ "quarta-feira",
-  num == 5 ~ "quinta-feira",
-  num == 6 ~ "sexta-feira",
-  num == 7 ~ "sabado",
-  .default = "Erro"
-)
-#>  [1] "quinta-feira"  "quarta-feira"  "sabado"        "quarta-feira" 
-#>  [5] "quinta-feira"  "quinta-feira"  "segunda-feira" "domingo"      
-#>  [9] "terca-feira"   "segunda-feira" "domingo"       "domingo"      
-#> [13] "domingo"       "sexta-feira"   "segunda-feira" "terca-feira"  
-#> [17] "quarta-feira"  "quarta-feira"  "terca-feira"   "terca-feira"
 ```
 
 #### Estrutura de Repetição:
@@ -484,9 +471,15 @@ y1 <- as.numeric(readline("Digite número coordenada (y) ponto P: "))
 x2 <- as.numeric(readline("Digite número coordenada (x) ponto Q: "))
 y2 <- as.numeric(readline("Digite número coordenada (y) ponto Q: "))
 
+
+x1 <- 0
+y1 <- 0
+x2 <- 3
+y2 <- 4
 # Processamento
 distance <- sqrt((x2-x1)^2+(y2-y1)^2)
 slope <- (y2-y1)/(x2-x1)
+
 # Saída
 print(paste0("A distância entre os pontos é: ", distance))
 print(paste0("A inclinação da reta é: ", slope))
@@ -498,12 +491,8 @@ print(paste0("A inclinação da reta é: ", slope))
 
 ``` r
 # Entrada
-num_1 <- readline("Digite número 1: ")
-num_2 <- readline("Digite número 2: ")
-
-## garantindo que as entradas são numéricas
-num_1 <- as.numeric(num_1)
-num_2 <- as.numeric(num_2)
+num_1 <- 8
+num_2 <- 5
 
 # Definindo e iniciando os números maior e menor
 if(num_1 > num_2){
@@ -513,8 +502,10 @@ if(num_1 > num_2){
   maior <- num_2
   menor <- num_1
 }
-
 print(paste0("maior Número Digitado: ", maior))
+
+# ou
+max(num_1, num_2)
 ```
 
 2.  Faça um programa que peça um valor e mostre na tela se o valor é
@@ -608,6 +599,36 @@ if(letra %in% vogais) {
     A mensagem “Aprovado”, se a média alcançada for maior ou igual a
     sete; • A mensagem “Reprovado”, se a média for menor do que sete; •
     A mensagem “Aprovado com Distinção”, se a média for igual a dez.
+
+``` r
+nota1 <- 10
+nota2 <- 5
+# vetor_notas <- c(nota1,nota2)
+# media <- mean(vetor_notas)
+media <- (nota2+nota1)/2
+
+if(media == 10){
+  print("Aprovado com Dist...")
+}else{
+  if(media >=7){
+    print("Aprovado")
+  }else{
+    print("Reprovado")
+  }
+}
+#> [1] "Aprovado"
+
+if(media >= 7){
+  if(media == 10){
+    print("Aprovado com Dist...")
+  }else{
+    print("Aprovado")
+  }
+}else{
+  print("Reprovado")
+}
+#> [1] "Aprovado"
+```
 
 7.  Faça um programa que leia três números e mostre o maior e o menor
     deles.
