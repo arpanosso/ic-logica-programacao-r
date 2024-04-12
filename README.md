@@ -546,23 +546,29 @@ o ano é divisível por 400.
 
 – Se não for divisível por 400, então, o ano não é bissexto.
 
-:– Se for divisível por 400, então, é ano bissexto (caso 2).
+– Se for divisível por 400, então, é ano bissexto (caso 2).
 
 ``` r
-ano <- as.numeric(readline("Digite o ano: "))
-if(ano %% 4 == 0){
-  if(ano %% 100 == 0){
-    if(ano %% 400 == 0){
-      print("Ano bisexto!") 
+testa_ano_bissexto <- function(ano){
+  if((floor(ano) - ano == 0) & (ano >= 1000 & ano <=9999)){
+    if(ano %% 4 == 0){
+      if(ano %% 100 == 0){
+        if(ano %% 400 == 0){
+         "Ano bisexto!"
+        }else{
+          "Ano não bisexto."
+        }
+      }else{
+        "Ano bisexto!"
+      }
     }else{
-      print("Ano não bisexto.")
+      "Ano não bisexto."
     }
   }else{
-    print("Ano bisexto!")
+    "ano inválido"
   }
-}else{
-  print("Ano não bisexto.")
 }
+testa_ano_bissexto(2000)
 ```
 
 5.  Faça um programa que verifique se uma letra digitada é vogal ou
@@ -715,17 +721,33 @@ Após o aumento ser realizado, informe na tela:
     aparecer valor inválido.
 
 ``` r
-numero <- as.numeric(
-  readline("Qual o dia da semana?"))
+numero <- 17
 
-if(numero == 1) print("Domingo")
-if(numero == 2) print("Segunda-feira")
-if(numero == 3) print("Terça-feira")
-if(numero == 4) print("Quarta-feira")
-if(numero == 5) print("Quinta-feira")
-if(numero == 6) print("Sexta-feira")
-if(numero == 7) print("Sábado")
-if(numero<1 | numero >7) print("Valor inválido")
+# if(numero == 1) print("Domingo")
+# if(numero == 2) print("Segunda-feira")
+# if(numero == 3) print("Terça-feira")
+# if(numero == 4) print("Quarta-feira")
+# if(numero == 5) print("Quinta-feira")
+# if(numero == 6) print("Sexta-feira")
+# if(numero == 7) print("Sábado")
+# if(numero < 1 | numero >7) print("Valor inválido")
+
+saida <- dplyr::case_when(
+  numero == 1 ~ "Domingo",
+  numero == 2 ~ "segunda",
+  numero == 3 ~ "terca",
+  numero == 4 ~ "quarta",
+  numero == 5 ~ "quinta",
+  numero == 6 ~ "sexta",
+  numero == 7 ~ "sabado",
+  TRUE ~ "invalido"
+)
+saida
+
+# numeros <- c(1,2,3,4,5,6,7)
+# dias <- c("dom","seg","ter","qua","qui","sex","sab")
+# indice <- -10
+# dias[indice]
 ```
 
 12. Faça um programa que tendo como dados de entrada o preço de custo de
@@ -734,6 +756,23 @@ if(numero<1 | numero >7) print("Valor inválido")
     produto deve ser classificado como importado. Código de origem: 1 -
     Sul, 2 - Norte 3 - Leste, 4 - Oeste, 5 ou 6 - nordeste 7 ou 8
     Centro-oeste.
+
+``` r
+codigo <- 1
+saida <- dplyr::case_when(
+  codigo == 1 ~ "Sul",
+  codigo == 2 ~ "Norte",
+  codigo == 3 ~ "Leste",
+  codigo == 4 ~ "Oeste",
+  codigo == 5 ~ "Nordeste",
+  codigo == 6 ~ "Nordeste",
+  codigo == 7 ~ "Centro-oeste",
+  codigo == 8 ~ "Centro-oeste",
+  TRUE ~ "invalido"
+)
+saida
+#> [1] "Sul"
+```
 
 13. Faça um programa que leia as duas notas parciais obtidas por um
     aluno numa disciplina ao longo de um semestre, e calcule a sua
@@ -760,6 +799,27 @@ for maior que o terceiro;
 • Triângulo Equilátero: três lados iguais;  
 • Triângulo Isósceles: quaisquer dois lados iguais;  
 • Triângulo Escaleno: três lados diferentes;
+
+``` r
+meu_triangulo <- function(lado_1, lado_2,lado_3){
+  if(lado_1+lado_2>lado_3 & lado_3+lado_2>lado_1 &
+     lado_1+lado_3 > lado_2){
+    if(lado_1 == lado_2 & lado_2 == lado_3){
+      "equilatero"
+    }else{
+      if(lado_1 == lado_2 | lado_2 == lado_3 | lado_1 == lado_3){
+        "isosceles"
+      }else{
+        "escaleno"
+      }
+    }
+  }else{
+    "não forma triangulo"
+  }
+}
+meu_triangulo(5,5,5)
+#> [1] "equilatero"
+```
 
 15. Escreva código que dado as coordenadas dos pontos A, B e C, teste se
     esses pontos formam um triângulo, se formarem, classifique o
