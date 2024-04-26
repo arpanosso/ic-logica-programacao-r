@@ -588,6 +588,29 @@ print(paste0("Menor Número Digitado: ", min(vetor)))
 
 
 8. Faça um programa que pergunte o preço de três produtos e informe qual produto você deve comprar, sabendo que a decisão é sempre pelo mais barato.
+```{r}
+prod_1 <- 1200
+prod_2 <- 400
+prod_3 <- 500
+vetor_de_precos <- c(prod_1,prod_2,prod_3) 
+min(vetor_de_precos)
+```
+
+
+```{r}
+vetor_nome_empresa <- c("Cia da Tinta", "Constru tintas", "Casa das Tintas")
+dados_tintas <- data.frame(vetor_nome_empresa, vetor_de_precos)
+
+library(tidyverse)
+dados_tintas %>% 
+  arrange(vetor_de_precos)
+
+dados_tintas %>% 
+  filter(vetor_de_precos == min(vetor_de_precos))
+```
+
+
+
 
 9. Faça um programa que pergunte em que turno você estuda. Peça para digitar M-matutino ou V-Vespertino ou N- Noturno. Imprima a mensagem "Bom Dia!", "Boa Tarde!" ou "Boa Noite!" ou "Valor Inválido!", conforme o caso.
 
@@ -603,6 +626,26 @@ print(dplyr::case_when(
   turno == "N" ~ ("Boa noite"),
   TRUE ~ "Valor Inválido"
 ))
+
+### Com if_else
+
+turno <- "0"
+turno <- stringr::str_to_upper(turno)
+if(turno == "V"){
+  "boa tarde"
+}else{
+  if(turno == "M"){
+    "bom dia"
+  }else{
+    if(turno == "N"){
+      "boa noite"
+    }else{
+      "invalido"
+    }
+  }
+}
+
+
 ```
 
 
@@ -782,6 +825,17 @@ Escreva um programa que leia o número de litros vendidos, o tipo de combustíve
 
 1. Faça um programa que leia um nome de usuário e a sua senha e não aceite a senha igual ao nome do usuário, mostrando uma mensagem de erro e voltando a pedir as informações.
 	
+```{r, eval=FALSE}
+repeat{
+  nome <- readline("Nome: ")
+  senha <- readline("Senha: ")
+  # nome == senha
+  if(nome != senha){
+    break
+  }
+}
+"Valeu"
+```
 
 2. Faça um programa que leia e valide as seguintes informações: 
 
@@ -790,6 +844,26 @@ b. Idade: entre 0 e 150;
 c. Salário: maior que zero;  
 d. Sexo: 'f' ou 'm';  
 e. Estado Civil: 's', 'c', 'v', 'd';  
+
+```{r, eval=FALSE}
+repeat{
+  nome <- readline("Nome (> de 3 caracteres): ")
+  if(length(as_vector(strsplit(nome,""))) >3 ){
+    break
+  }
+}
+
+repeat{
+  idade <- readline("Idade (entre 0  e 150): ")
+  idade <- as.numeric(idade)
+  if(idade >=0 & idade <=150){
+    break
+  }
+}
+
+```
+
+
 
 3. Supondo que a população de um país A seja da ordem de 80000 habitantes com uma taxa anual de crescimento de 3% e que a população de B seja 200000 habitantes com uma taxa de crescimento de 1.5%. Faça um programa que calcule e escreva o número de anos necessários para que a população do país A ultrapasse ou iguale a população do país B, mantidas as taxas de crescimento constantes.
 

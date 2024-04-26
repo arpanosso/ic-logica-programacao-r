@@ -680,6 +680,33 @@ print(paste0("Menor Número Digitado: ", min(vetor)))
     qual produto você deve comprar, sabendo que a decisão é sempre pelo
     mais barato.
 
+``` r
+prod_1 <- 1200
+prod_2 <- 400
+prod_3 <- 500
+vetor_de_precos <- c(prod_1,prod_2,prod_3) 
+min(vetor_de_precos)
+#> [1] 400
+```
+
+``` r
+vetor_nome_empresa <- c("Cia da Tinta", "Constru tintas", "Casa das Tintas")
+dados_tintas <- data.frame(vetor_nome_empresa, vetor_de_precos)
+
+library(tidyverse)
+dados_tintas %>% 
+  arrange(vetor_de_precos)
+#>   vetor_nome_empresa vetor_de_precos
+#> 1     Constru tintas             400
+#> 2    Casa das Tintas             500
+#> 3       Cia da Tinta            1200
+
+dados_tintas %>% 
+  filter(vetor_de_precos == min(vetor_de_precos))
+#>   vetor_nome_empresa vetor_de_precos
+#> 1     Constru tintas             400
+```
+
 9.  Faça um programa que pergunte em que turno você estuda. Peça para
     digitar M-matutino ou V-Vespertino ou N- Noturno. Imprima a mensagem
     “Bom Dia!”, “Boa Tarde!” ou “Boa Noite!” ou “Valor Inválido!”,
@@ -697,6 +724,24 @@ print(dplyr::case_when(
   turno == "N" ~ ("Boa noite"),
   TRUE ~ "Valor Inválido"
 ))
+
+### Com if_else
+
+turno <- "0"
+turno <- stringr::str_to_upper(turno)
+if(turno == "V"){
+  "boa tarde"
+}else{
+  if(turno == "M"){
+    "bom dia"
+  }else{
+    if(turno == "N"){
+      "boa noite"
+    }else{
+      "invalido"
+    }
+  }
+}
 ```
 
 10. Uma empresa resolveu dar um aumento de salário aos seus
@@ -917,6 +962,18 @@ do litro da gasolina é `R$` 2,50 o preço do litro do álcool é `R$` 1,90
     aceite a senha igual ao nome do usuário, mostrando uma mensagem de
     erro e voltando a pedir as informações.
 
+``` r
+repeat{
+  nome <- readline("Nome: ")
+  senha <- readline("Senha: ")
+  # nome == senha
+  if(nome != senha){
+    break
+  }
+}
+"Valeu"
+```
+
 2.  Faça um programa que leia e valide as seguintes informações:
 
 <!-- -->
@@ -927,7 +984,22 @@ do litro da gasolina é `R$` 2,50 o preço do litro do álcool é `R$` 1,90
 4.  Sexo: ‘f’ ou ‘m’;  
 5.  Estado Civil: ‘s’, ‘c’, ‘v’, ‘d’;
 
-<!-- -->
+``` r
+repeat{
+  nome <- readline("Nome (> de 3 caracteres): ")
+  if(length(as_vector(strsplit(nome,""))) >3 ){
+    break
+  }
+}
+
+repeat{
+  idade <- readline("Idade (entre 0  e 150): ")
+  idade <- as.numeric(idade)
+  if(idade >=0 & idade <=150){
+    break
+  }
+}
+```
 
 3.  Supondo que a população de um país A seja da ordem de 80000
     habitantes com uma taxa anual de crescimento de 3% e que a população
