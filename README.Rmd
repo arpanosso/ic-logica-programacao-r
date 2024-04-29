@@ -846,22 +846,21 @@ d. Sexo: 'f' ou 'm';
 e. Estado Civil: 's', 'c', 'v', 'd';  
 
 ```{r, eval=FALSE}
+library(tidyverse)
 repeat{
   nome <- readline("Nome (> de 3 caracteres): ")
-  if(length(as_vector(strsplit(nome,""))) >3 ){
-    break
-  }
-}
-
-repeat{
   idade <- readline("Idade (entre 0  e 150): ")
   idade <- as.numeric(idade)
-  if(idade >=0 & idade <=150){
+  
+  if(nchar(nome) > 3 & 
+     (idade >=0 & idade <=150) ){
+    
+    
     break
   }
 }
-
 ```
+
 
 
 
@@ -1034,6 +1033,20 @@ Exemplo dados os conjuntos A = { 1, 2, 3, 5} e B {2,4,5}, temos: (A∪B={1,2,3,4
 
 
 ### 1.6) Modulação - subrotinas e funções
+
+Sequencia de Fibonacci
+```{r}
+n <- 50
+v_fib <- c(0,1)
+if(n<=2) {
+  v_fib
+  } else {
+    for(i in 3:n) v_fib[i] = v_fib[i-1] + v_fib[i-2]
+    v_fib
+  }
+```
+
+
 
 ## 2) Modelagem de qualidade da água em bacias hidrológicas do estado de São Paulo
 

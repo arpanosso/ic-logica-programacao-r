@@ -985,17 +985,16 @@ repeat{
 5.  Estado Civil: ‘s’, ‘c’, ‘v’, ‘d’;
 
 ``` r
+library(tidyverse)
 repeat{
   nome <- readline("Nome (> de 3 caracteres): ")
-  if(length(as_vector(strsplit(nome,""))) >3 ){
-    break
-  }
-}
-
-repeat{
   idade <- readline("Idade (entre 0  e 150): ")
   idade <- as.numeric(idade)
-  if(idade >=0 & idade <=150){
+  
+  if(nchar(nome) > 3 & 
+     (idade >=0 & idade <=150) ){
+    
+    
     break
   }
 }
@@ -1209,5 +1208,27 @@ Exemplo dados os conjuntos A = { 1, 2, 3, 5} e B {2,4,5}, temos:
     união e interseção dos conjuntos.
 
 ### 1.6) Modulação - subrotinas e funções
+
+Sequencia de Fibonacci
+
+``` r
+n <- 50
+v_fib <- c(0,1)
+if(n<=2) {
+  v_fib
+  } else {
+    for(i in 3:n) v_fib[i] = v_fib[i-1] + v_fib[i-2]
+    v_fib
+  }
+#>  [1]          0          1          1          2          3          5
+#>  [7]          8         13         21         34         55         89
+#> [13]        144        233        377        610        987       1597
+#> [19]       2584       4181       6765      10946      17711      28657
+#> [25]      46368      75025     121393     196418     317811     514229
+#> [31]     832040    1346269    2178309    3524578    5702887    9227465
+#> [37]   14930352   24157817   39088169   63245986  102334155  165580141
+#> [43]  267914296  433494437  701408733 1134903170 1836311903 2971215073
+#> [49] 4807526976 7778742049
+```
 
 ## 2) Modelagem de qualidade da água em bacias hidrológicas do estado de São Paulo
