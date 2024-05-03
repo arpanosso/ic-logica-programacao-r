@@ -986,16 +986,33 @@ repeat{
 
 ``` r
 repeat{
-  nome <- readline("Nome (> de 3 caracteres): ")
-  if(length(as_vector(strsplit(nome,""))) >3 ){
-    break
-  }
-}
-
-repeat{
-  idade <- readline("Idade (entre 0  e 150): ")
-  idade <- as.numeric(idade)
-  if(idade >=0 & idade <=150){
+  #vetor para os teste
+  vetor_sexo <- c("m","f")
+  vetor_estado_civil <- c("s","c","v","d")
+  
+  # Entrar com as informações
+  nome <- readline("Nome (maior que 3 caracteres): ")
+  idade <- as.numeric(readline("Idade (entre 0 e 150): "))
+  salario <- readline("Salario (maior que zero): ") %>% as.numeric()
+  sexo <- readline("Sexo ('f' ou 'm'): ") %>% str_to_lower()
+  estado_civil <- readline("Estado Civil ('s','c','v','d'): ") %>% str_to_lower()
+  
+  # Avisar ao usuário a validade ou não da informação
+  if(nchar(nome) <= 3 ){nome <- "INVÁLIDO"} 
+  if(!(idade >= 0 & idade <=150) ){idade <- "INVÁLIDO"}
+  if((salario <= 0) ){salario <- "INVÁLIDO"}
+  if(!(sexo %in% vetor_sexo) ){sexo <- "INVÁLIDO"}
+  if(!(estado_civil %in% vetor_estado_civil)){estado_civil <- "INVÁLIDO"}
+  
+  # Mostrar os dados digitados
+  print(paste0("Nome: ", nome))
+  print(paste0("Idade: ", (idade)))
+  print(paste0("Salário: ", salario))
+  print(paste0("Sexo: ", sexo))
+  print(paste0("Estado Civil: ", estado_civil))
+  
+  # Saida do progama
+  if(nome != "INVÁLIDO" & idade != "INVÁLIDO" & salario != "INVÁLIDO" & sexo != "INVÁLIDO" & estado_civil != "INVÁLIDO"){
     break
   }
 }
@@ -1007,6 +1024,90 @@ repeat{
     Faça um programa que calcule e escreva o número de anos necessários
     para que a população do país A ultrapasse ou iguale a população do
     país B, mantidas as taxas de crescimento constantes.
+
+``` r
+pop_a <- 8e4
+pop_b <- 2e5
+tx_a <- 0.03
+tx_b <- 0.015
+ano <- 1
+
+while (pop_a < pop_b) {
+  pop_a = pop_a*(1+tx_a)
+  pop_b = pop_b*(1+tx_b)
+  ano <- ano + 1
+  if(pop_a >= pop_b) {print(ano)}
+}
+#> [1] 64
+```
+
+abordagem gráfica
+
+``` r
+pop_a <- 5e4
+pop_b <- 7e4
+tx_a <- 0.03
+tx_b <- 0.015
+ano <- 1
+
+vetor_pop_a <- 0
+vetor_pop_b <- 0
+vetor_ano <- 0
+vetor_ano_final <- 0
+for( i in 1:10000){
+  pop_a <- 5e4
+  pop_b <- 7e4
+  ano <- 1
+  vetor_pop_a <- 0
+  vetor_pop_b <- 0
+  vetor_ano <- 0
+  
+  while (pop_a < pop_b) {
+    tx_a <- rnorm(1,0.03,0.01)
+    tx_b <- rnorm(1,0.015,0.01)
+    pop_a = pop_a*(1+tx_a)
+    pop_b = pop_b*(1+tx_b)
+    vetor_pop_a[ano] <- pop_a
+    vetor_pop_b[ano] <- pop_b
+    vetor_ano[ano] <- ano
+    ano <- ano + 1
+    # if(pop_a >= pop_b) {
+    #   # print(ano)
+    # }
+  }
+  vetor_ano_final[i] <- ano
+}
+mean(vetor_ano_final)
+#> [1] 24.7107
+sd(vetor_ano_final)
+#> [1] 4.594531
+
+
+tibble(vetor_ano,vetor_pop_a,vetor_pop_b) %>%
+  pivot_longer(cols = c(vetor_pop_a, vetor_pop_b),names_to = "populacao",
+               values_to = "valor") %>%
+  ggplot(aes(x=vetor_ano,y=valor,color = populacao)) +
+  geom_line()
+```
+
+![](README_files/figure-gfm/unnamed-chunk-37-1.png)<!-- -->
+
+``` r
+for(i in 1:10){
+  print((-1)*i*(-1)^i)
+  
+}
+#> [1] 1
+#> [1] -2
+#> [1] 3
+#> [1] -4
+#> [1] 5
+#> [1] -6
+#> [1] 7
+#> [1] -8
+#> [1] 9
+#> [1] -10
+```
 
 4.  Altere o programa anterior permitindo ao usuário informar as
     populações e as taxas de crescimento iniciais. Valide a entrada e
