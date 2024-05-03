@@ -1078,9 +1078,9 @@ for( i in 1:10000){
   vetor_ano_final[i] <- ano
 }
 mean(vetor_ano_final)
-#> [1] 24.7107
+#> [1] 24.7817
 sd(vetor_ano_final)
-#> [1] 4.594531
+#> [1] 4.614236
 
 
 tibble(vetor_ano,vetor_pop_a,vetor_pop_b) %>%
